@@ -173,3 +173,43 @@
     font-size: 14px;
     color: #e2e8f0;
   }
+  
+  /* Adding the missing styles for details-actions buttons */
+  .details-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568;
+  }
+  
+  .edit-button, .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-button {
+    background-color: #4299e1;
+    color: white;
+  }
+  
+  .edit-button:hover {
+    background-color: #3182ce;
+    box-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
+  }
+  
+  .back-button {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    border: 1px solid #4a5568;
+  }
+  
+  .back-button:hover {
+    background-color: #2d3748;
+    box-shadow: 0 0 10px rgba(74, 85, 104, 0.5);
+  }
