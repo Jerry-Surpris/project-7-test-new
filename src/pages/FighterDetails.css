@@ -1,0 +1,175 @@
+.fighter-details {
+    max-width: 800px;
+    width: 100%;
+    background-color: #2d3748;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #e2e8f0;
+  }
+  
+  .loading, .error {
+    text-align: center;
+    padding: 40px;
+    font-size: 20px;
+    color: #e2e8f0;
+  }
+  
+  .details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #4a5568;
+  }
+  
+  .details-header h1 {
+    color: #f6ad55;
+    margin: 0;
+    font-size: 32px;
+    text-shadow: 0 0 10px rgba(246, 173, 85, 0.3);
+  }
+  
+  .class-badge {
+    background-color: #1a202c;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f6ad55;
+    border: 1px solid #4a5568;
+  }
+  
+  .details-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .stats-section, .info-section {
+    background-color: #1a202c;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #f6ad55;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  .detail-stat {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .stat-label {
+    width: 100px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .stat-bar {
+    flex-grow: 1;
+    height: 12px;
+    background-color: #4a5568;
+    border-radius: 6px;
+    margin: 0 15px;
+    overflow: hidden;
+  }
+  
+  .stat-fill {
+    height: 100%;
+    border-radius: 6px;
+  }
+  
+  .stat-fill.strength {
+    background-color: #e53e3e;
+  }
+  
+  .stat-fill.speed {
+    background-color: #38b2ac;
+  }
+  
+  .stat-fill.magic {
+    background-color: #805ad5;
+  }
+  
+  .stat-value {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .power-badge {
+    display: flex;
+    align-items: center;
+    background-color: #2d3748;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 25px;
+  }
+  
+  .power-icon {
+    font-size: 24px;
+    margin-right: 15px;
+  }
+  
+  .power-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .power-label {
+    font-size: 14px;
+    color: #a0aec0;
+  }
+  
+  .power-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #f6ad55;
+  }
+  
+  .traits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .trait-item {
+    background-color: #2d3748;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .special-ability {
+    margin: 25px 0;
+  }
+  
+  .ability-box {
+    background-color: #2d3748;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  
+  .ability-name {
+    display: block;
+    font-weight: bold;
+    color: #f6ad55;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  
+  .ability-desc {
+    font-size: 14px;
+    color: #e2e8f0;
+  }
