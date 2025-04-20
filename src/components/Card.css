@@ -1,58 +1,130 @@
-.Card {
+.FighterCard {
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
-    border: 1px solid rgba(153, 153, 153, 0.497);
-    border-radius: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 10px;
+    border: 1px solid #4a5568;
+    border-radius: 12px;
+    padding: 25px 15px;
     margin-bottom: 25px;
-    width: 400px;
+    width: 100%;
     text-align: center;
-}
-
-.title {
-    color:white;
-    padding-left:30px;
-    font-size: 24px;
-}
-
-.author {
-    color:white;
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.description {
-    color:white;  
-    text-align: justify;
-    text-justify: inter-word;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-
-.betButton {
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 15px;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    color:white;
-    cursor: pointer;
-    transition: border-color 0.25s;
-}
-.betButton:hover {
-    border-color: #646cff;
+    background-color: #2d3748;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
   }
-
-.moreButton {
-    width: 30px;
-    float:right;
-
-}
-.moreButton:hover {
+  
+  .FighterCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    border-color: #f6ad55;
+  }
+  
+  .FighterCard.selected {
+    border: 2px solid #f6ad55;
+    box-shadow: 0 0 15px rgba(246, 173, 85, 0.5);
+  }
+  
+  .name {
+    color: #f6ad55;
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .class {
+    color: #a0aec0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-style: italic;
+  }
+  
+  .description {
+    color: #e2e8f0;
+    text-align: center;
+    padding: 0 10px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .editButton {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
-}
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  
+  .editButton:hover {
+    opacity: 1;
+  }
+  
+  .stats {
+    margin: 20px 0;
+  }
+  
+  .stat {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .stat-label {
+    width: 40px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 14px;
+    color: #cbd5e0;
+  }
+  
+  .stat-bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #4a5568;
+    border-radius: 5px;
+    margin: 0 10px;
+    overflow: hidden;
+  }
+  
+  .stat-fill {
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  .stat-fill.strength {
+    background-color: #e53e3e;
+  }
+  
+  .stat-fill.speed {
+    background-color: #38b2ac;
+  }
+  
+  .stat-fill.magic {
+    background-color: #805ad5;
+  }
+  
+  .stat-value {
+    width: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .powerLevel {
+    margin-top: 15px;
+    background-color: #1a202c;
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #f6ad55;
+  }
+  
+  .fighterLink {
+    text-decoration: none;
+    color: inherit;
+  }

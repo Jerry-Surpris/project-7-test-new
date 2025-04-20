@@ -1,12 +1,11 @@
 .App {
-  font-family:Avenir, "Century Gothic", sans-serif;
-  font-weight:100; 
-  font-style:normal;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 400;
   font-size: calc(10px + 2vmin);
   color: white;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.962);
-  padding:20px;
+  background-color: #1a202c;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,18 +13,26 @@
   justify-content: center;
 }
 
-.header{
+.header {
   width: 100%;
-  color:white;
+  color: white;
   text-align: center;
 }
 
-.headerBtn {
-  margin-bottom: 50px;
-  margin-right: 10px;
+.header h1 {
+  color: #f6ad55;
+  text-shadow: 0 0 10px rgba(246, 173, 85, 0.5);
+  margin-bottom: 20px;
 }
 
-.ReadPosts {
+.headerBtn {
+  margin-bottom: 30px;
+  margin-right: 15px;
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+}
+
+.ViewTeam {
   display: grid;
   grid-auto-flow: row;
   grid-template-columns: repeat(2, 1fr);
@@ -39,11 +46,19 @@ button {
   font-size: 15px;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  color:white;
+  background-color: #2d3748;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: #f6ad55;
+  box-shadow: 0 0 5px rgba(246, 173, 85, 0.5);
+}
+
+@media (max-width: 768px) {
+  .ViewTeam {
+    grid-template-columns: 1fr;
+  }
 }

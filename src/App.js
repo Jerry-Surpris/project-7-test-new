@@ -2,65 +2,77 @@
 // Z23568981
 import './App.css';
 import React from 'react';
-import { useRoutes } from 'react-router-dom'
-import ReadPosts from './pages/ReadPosts'
-import CreatePost from './pages/CreatePost'
-import EditPost from './pages/EditPost'
-import { Link } from 'react-router-dom'
-
+import { useRoutes } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ViewTeam from './pages/ViewTeam';
+import CreateFighter from './pages/CreateFighter';
+import EditFighter from './pages/EditFighter';
+import FighterDetails from './pages/FighterDetails';
 
 const App = () => {
   
-  const descr = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+  const defaultDescr = 'This fighter is ready for battle. Customize their stats to make them a formidable ally on your quest.';
 
-  const posts = [
-      {'id':'1', 
-      'title': 'Cartwheel in Chelsea 🤸🏽‍♀️',
-      'author':'Harvey Milian', 
-      'description': descr},
-      {'id':'2', 
-      'title': 'Love Lock in Paris 🔒',
-      'author':'Beauford Delaney', 
-      'description':descr},
-      {'id':'3', 
-      'title': 'Wear Pink on Fridays 🎀',
-      'author':'Onika Tonya', 
-      'description':descr},
-      {'id':'4', 
-      'title': 'Adopt a Dog 🐶',
-      'author':'Denise Michelle', 
-      'description':descr},
-  ]
+  // Sample data to start with before connecting to Supabase
+  const fighters = [
+    {
+      'id': '1', 
+      'name': 'Shadow Blade', 
+      'class': 'Assassin',
+      'strength': 6,
+      'speed': 9, 
+      'magic': 4,
+      'description': defaultDescr
+    },
+    {
+      'id': '2', 
+      'name': 'Iron Shield', 
+      'class': 'Guardian',
+      'strength': 8,
+      'speed': 4, 
+      'magic': 3,
+      'description': defaultDescr
+    },
+    {
+      'id': '3', 
+      'name': 'Mystic Seer', 
+      'class': 'Mage',
+      'strength': 3,
+      'speed': 5, 
+      'magic': 10,
+      'description': defaultDescr
+    },
+  ];
  
-
   // Sets up routes
   let element = useRoutes([
     {
       path: "/",
-      element:<ReadPosts data={posts}/>
+      element: <ViewTeam data={fighters} />
     },
     {
-      path:"/edit/:id",
-      element: <EditPost data={posts} />
+      path: "/fighter/:id",
+      element: <FighterDetails data={fighters} />
     },
     {
-      path:"/new",
-      element: <CreatePost />
+      path: "/edit/:id",
+      element: <EditFighter data={fighters} />
+    },
+    {
+      path: "/new",
+      element: <CreateFighter />
     }
   ]);
 
   return ( 
-
     <div className="App">
-
       <div className="header">
-        <h1>👍 Bet 1.0</h1>
-        <Link to="/"><button className="headerBtn"> Explore Challenges 🔍  </button></Link>
-        <Link to="/new"><button className="headerBtn"> Submit Challenge 🏆 </button></Link>
+        <h1>⚔️ Fantasy Fighters</h1>
+        <Link to="/"><button className="headerBtn">View My Team 👥</button></Link>
+        <Link to="/new"><button className="headerBtn">Add New Fighter 🔥</button></Link>
       </div>
-        {element}
+      {element}
     </div>
-
   );
 }
 

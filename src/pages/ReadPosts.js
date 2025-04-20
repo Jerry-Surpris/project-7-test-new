@@ -1,36 +1,133 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../components/Card';
-import { supabase } from '../client'
+import FighterCard from '../components/FighterCard';
+import { supabase } from '../client';
+import './ViewTeam.css';
 
-const ReadPosts = (props) => {
+const ViewTeam = (props) => {
+  const [fighters, setFighters] = useState([]);
+  const [teamStats, setTeamStats] = useState({
+    totalFighters: 0,
+    avgStrength: 0,
+    avgSpeed: 0,
+    avgMagic: 0,
+    teamPower: 0
+  });
 
-    const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    // First set data from props (for initial render)
+    if (props.data) {
+      setFighters(props.data);
+      calculateTeamStats(props.data);
+    }
 
-    useEffect(() => {
+    // Then fetch data from Supabase
+    const fetchFighters = async () => {
+      const { data, error } = await supabase
+        .from('Fighters')
+        .select()
+        .order('created_at', { ascending: false });
 
-        const fetchPost = async () => {
-        const {data} = await supabase
-          .from('Posts')
-          .select()
-          .order('created_at', { ascending: true })
+      if (error) {
+        console.error('Error fetching fighters:', error);
+      } else if (data) {
+        setFighters(data);
+        calculateTeamStats(data);
+      }
+    };
 
-        // set state of posts
-         setPosts(data);
-        }
-        setPosts(props.data);
-        fetchPost();
-    }, [props]);
+    fetchFighters();
+  }, [props]);
+
+  const calculateTeamStats = (teamData) => {
+    if (!teamData || teamData.length === 0) {
+      setTeamStats({
+        totalFighters: 0,
+        avgStrength: 0,
+        avgSpeed: 0,
+        avgMagic: 0,
+        teamPower: 0
+      });
+      return;
+    }
+
+    const totalFighters = teamData.length;
+    let totalStr = 0, totalSpd = 0, totalMag = 0;
+
+    teamData.forEach(fighter => {
+      totalStr += fighter.strength || 0;
+      totalSpd += fighter.speed || 0;
+      totalMag += fighter.magic || 0;
+    });
+
+    const avgStrength = Math.round(totalStr / totalFighters);
+    const avgSpeed = Math.round(totalSpd / totalFighters);
+    const avgMagic = Math.round(totalMag / totalFighters);
     
-    return (
-        <div className="ReadPosts">
-            {
-                posts && posts.length > 0 ?
-                posts.map((post,index) => 
-                   <Card id={post.id} title={post.title} author={post.author} description={post.description}/>
-                ) : <h2>{'No Challenges Yet 😞'}</h2>
-            }
-        </div>  
-    )
-}
+    // Calculate overall team power
+    const teamPower = Math.round((avgStrength * 1.2 + avgSpeed * 0.8 + avgMagic * 1.0) / 3);
 
-export default ReadPosts;
+    setTeamStats({
+      totalFighters,
+      avgStrength,
+      avgSpeed,
+      avgMagic,
+      teamPower
+    });
+  };
+
+  return (
+    <div>
+      {fighters && fighters.length > 0 ? (
+        <>
+          <div className="team-stats">
+            <h2>Team Stats</h2>
+            <div className="stats-grid">
+              <div className="stat-box">
+                <span className="stat-title">Fighters</span>
+                <span className="stat-value">{teamStats.totalFighters}</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-title">Avg STR</span>
+                <span className="stat-value">{teamStats.avgStrength}</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-title">Avg SPD</span>
+                <span className="stat-value">{teamStats.avgSpeed}</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-title">Avg MAG</span>
+                <span className="stat-value">{teamStats.avgMagic}</span>
+              </div>
+              <div className="stat-box power">
+                <span className="stat-title">Team Power</span>
+                <span className="stat-value">{teamStats.teamPower}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="ViewTeam">
+            {fighters.map((fighter) => (
+              <FighterCard
+                key={fighter.id}
+                id={fighter.id}
+                name={fighter.name}
+                class={fighter.class}
+                strength={fighter.strength}
+                speed={fighter.speed}
+                magic={fighter.magic}
+                description={fighter.description}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="empty-state">
+          <h2>No Fighters Yet 😞</h2>
+          <p>Create your first fighter to start building your team!</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ViewTeam;
