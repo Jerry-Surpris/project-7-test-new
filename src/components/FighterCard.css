@@ -1,0 +1,48 @@
+/* FighterCard.css */
+.FighterCard {
+    background-color: #2d3748;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.FighterCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.card-content h2 {
+    color: #f6ad55;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #a0aec0;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .FighterCard {
+        padding: 15px;
+    }
+
+    .card-content h2 {
+        font-size: 20px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+    }
+}
