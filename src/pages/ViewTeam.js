@@ -75,6 +75,30 @@ const ViewTeam = (props) => {
     });
   };
 
+  const updateFighter = async (updatedFighter) => {
+    try {
+      const { error } = await supabase
+        .from('Fighters')
+        .update(updatedFighter)
+        .eq('id', updatedFighter.id);
+
+      if (error) {
+        console.error('Error updating fighter:', error);
+        alert('Failed to update fighter. Please try again.');
+      } else {
+        setFighters((prevFighters) =>
+          prevFighters.map((fighter) =>
+            fighter.id === updatedFighter.id ? updatedFighter : fighter
+          )
+        );
+        calculateTeamStats([...fighters]);
+      }
+    } catch (error) {
+      console.error('Exception:', error);
+      alert('An unexpected error occurred. Please try again.');
+    }
+  };
+
   return (
     <div>
       {fighters && fighters.length > 0 ? (
@@ -116,6 +140,7 @@ const ViewTeam = (props) => {
                 speed={fighter.speed}
                 magic={fighter.magic}
                 description={fighter.description}
+                updateFighter={updateFighter}
               />
             ))}
           </div>
